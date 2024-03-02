@@ -8,9 +8,11 @@ pub trait Params {
 }
 
 macro_rules! params {
-    ($vis:vis, $name:ident, $($param:ident),*) => {
+    ($name:ident, $($param:ident: $comment:literal,)*) => {
         #[derive(Clone, Copy, Debug)]
-        $vis struct $name<T> { $($vis $param: T),* }
+        pub struct $name<T> {
+            $(#[doc = $comment] pub $param: T),*
+        }
 
         impl<T> crate::Params for $name<T> {
             type Item = T;
@@ -29,3 +31,4 @@ macro_rules! params {
         }
     };
 }
+pub mod the_blazing_blade;
