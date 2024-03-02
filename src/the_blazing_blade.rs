@@ -1,7 +1,7 @@
 pub use crate::gba::Rng;
 
-params!(
-    Params,
+stats!(
+    Stats,
     hp: "HP",
     str_mag: "力/魔力" ,
     skill: "技",
@@ -13,15 +13,15 @@ params!(
 
 pub struct Unit {
     pub name: &'static str,
-    pub growth_rate: Params<u8>,
+    pub growth_rate: Stats<u8>,
 }
 
 pub mod units {
-    use super::{Params, Unit};
+    use super::{Stats, Unit};
 
     pub const REBECCA: Unit = Unit {
         name: "レベッカ",
-        growth_rate: Params {
+        growth_rate: Stats {
             hp: 60,
             str_mag: 40,
             skill: 50,
