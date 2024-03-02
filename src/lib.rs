@@ -1,3 +1,5 @@
+mod gba;
+
 pub trait Params {
     type Item;
     type Params<T>: Params<Item = T>;

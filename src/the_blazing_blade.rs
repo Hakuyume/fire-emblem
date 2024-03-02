@@ -1,3 +1,5 @@
+pub use crate::gba::Rng;
+
 params!(
     Params,
     hp: "HP",
