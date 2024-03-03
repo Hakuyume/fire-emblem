@@ -10,10 +10,10 @@ pub trait Stats {
 }
 
 macro_rules! stats {
-    ($name:ident, $($param:ident: $comment:literal,)*) => {
+    ($name:ident, $($stat:ident: $comment:literal,)*) => {
         #[derive(Clone, Copy, Debug)]
         pub struct $name<T> {
-            $(#[doc = $comment] pub $param: T),*
+            $(#[doc = $comment] pub $stat: T),*
         }
 
         impl<T> crate::Stats for $name<T> {
@@ -24,11 +24,11 @@ macro_rules! stats {
             where
                 F: FnMut(Self::Item) -> U
             {
-                $name { $($param: f(self.$param)),* }
+                $name { $($stat: f(self.$stat)),* }
             }
 
             fn zip<U>(self, other: Self::Stats<U>) -> Self::Stats<(Self::Item, U)> {
-                $name { $($param: (self.$param, other.$param)),* }
+                $name { $($stat: (self.$stat, other.$stat)),* }
             }
         }
     };
