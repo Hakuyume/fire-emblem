@@ -9,6 +9,8 @@ stats!(
     luck: "幸運",
     def: "守備" ,
     res: "魔防",
+    r#move: "移動",
+    con: "体格",
 );
 
 pub struct Unit {
@@ -29,6 +31,8 @@ pub mod units {
             luck: 50,
             def: 15,
             res: 30,
+            r#move: 0,
+            con: 0,
         },
     };
 }
